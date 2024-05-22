@@ -18,16 +18,16 @@ public class Carro {
     @Column(name = "color", length = 50, nullable = true)
     private String color;
 
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "categoria_id", nullable = false)
+    private Categoria categoriaId;
+
     //modificacion
+
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuarioId;
-
-
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "categoria_id", nullable = false)
-    private Categoria categoriaId;
 
     public Long getId() {
         return id;
@@ -76,4 +76,8 @@ public class Carro {
     public void setCategoriaId(Categoria categoriaId) {
         this.categoriaId = categoriaId;
     }
+
+    public Usuario getUsuarioId() {return usuarioId;}
+
+    public void setUsuarioId(Usuario usuarioId) {this.usuarioId = usuarioId;}
 }
